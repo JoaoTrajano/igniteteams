@@ -1,9 +1,10 @@
 import { Text, View } from "react-native";
+import { Container } from "./style";
 
 export default function Groups() {
   return (
-    <View>
+    <Container>
       <Text>Groups</Text>
-    </View>
+    </Container>
   );
 }
