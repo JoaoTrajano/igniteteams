@@ -10,7 +10,7 @@ export const Form = styled.View`
   width: 100%;
   border-radius: 6px;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   background-color: ${({ theme }) => theme.COLORS.GRAY_700};
 `;
 
