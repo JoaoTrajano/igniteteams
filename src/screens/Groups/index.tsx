@@ -9,7 +9,7 @@ import { Button } from "@components/Button";
 import { useNavigation } from "@react-navigation/native";
 
 export function Groups() {
-  const [groups, setGroups] = useState<string[]>(["Hell Club"]);
+  const [groups, setGroups] = useState<string[]>([]);
   const navigation = useNavigation();
 
   const handleNewGroup = () => {

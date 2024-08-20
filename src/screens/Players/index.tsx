@@ -10,32 +10,25 @@ import { FlatList } from "react-native";
 import { PlayerCard } from "@components/PlayerCard";
 import { ListEmpty } from "@components/ListEmpty";
 import { Button } from "@components/Button";
+import { useRoute } from "@react-navigation/native";
+
+type RouteParamsPlayers = {
+  group: string;
+};
 
 export function Players() {
   const [team, setTeam] = useState<string>("Time A");
-  const [players, setPlayers] = useState<string[]>([
-    "João Trajano de Souza Neto",
-    "Laís Santos da Cruz",
-    "Márcio Ramos de Souza",
-    "Marlon Ramos de Souza",
-    "Juliana Barbara Ramos de Souza",
-    "Brenda Helena Andrade de Souza",
-    "José Luiz de Souza",
-    "Tânia Maria Ramos de Sozua",
-    "Lucas",
-    "Heloisa",
-    "Larissa",
-  ]);
+  const [players, setPlayers] = useState<string[]>([]);
+
+  const route = useRoute();
+  const { group } = route.params as RouteParamsPlayers;
 
   const changeTeam = useCallback((team: string) => setTeam(team), [team]);
 
   return (
     <Container>
       <Header showBackButton />
-      <Highlight
-        title="Nome da Turma"
-        subtitle="adicione a galera e separe os times"
-      />
+      <Highlight title={group} subtitle="adicione a galera e separe os times" />
       <Form>
         <Input placeholder="Nome da pessoa" autoCorrect={false} />
         <ButtonIcon icon="add" />
