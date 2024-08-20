@@ -8,10 +8,24 @@ import { Input } from "@components/Input";
 import { Filter } from "@components/Filter";
 import { FlatList } from "react-native";
 import { PlayerCard } from "@components/PlayerCard";
+import { ListEmpty } from "@components/ListEmpty";
+import { Button } from "@components/Button";
 
 export function Players() {
   const [team, setTeam] = useState<string>("Time A");
-  const [players, setPlayers] = useState<string[]>(["João Trajano"]);
+  const [players, setPlayers] = useState<string[]>([
+    "João Trajano de Souza Neto",
+    "Laís Santos da Cruz",
+    "Márcio Ramos de Souza",
+    "Marlon Ramos de Souza",
+    "Juliana Barbara Ramos de Souza",
+    "Brenda Helena Andrade de Souza",
+    "José Luiz de Souza",
+    "Tânia Maria Ramos de Sozua",
+    "Lucas",
+    "Heloisa",
+    "Larissa",
+  ]);
 
   const changeTeam = useCallback((team: string) => setTeam(team), [team]);
 
@@ -47,7 +61,16 @@ export function Players() {
         renderItem={({ item }) => (
           <PlayerCard name={item} onRemove={() => {}} />
         )}
+        ListEmptyComponent={() => (
+          <ListEmpty message="Não há pessoas nesse time" />
+        )}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={[
+          { paddingBottom: 100 },
+          players.length === 0 && { flex: 1 },
+        ]}
       />
+      <Button title="Remover Turma" type="SECONDARY" />
     </Container>
   );
 }
